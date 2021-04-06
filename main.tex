@@ -15,26 +15,26 @@
 % First comes an example EPS file -- just ignore it and
 % proceed on the \documentclass line
 % your LaTeX will extract the file if required
-\begin{filecontents*}{example.eps}
-%!PS-Adobe-3.0 EPSF-3.0
-%%BoundingBox: 19 19 221 221
-%%CreationDate: Mon Sep 29 1997
-%%Creator: programmed by hand (JK)
-%%EndComments
-gsave
-newpath
-  20 20 moveto
-  20 220 lineto
-  220 220 lineto
-  220 20 lineto
-closepath
-2 setlinewidth
-gsave
-  .4 setgray fill
-grestore
-stroke
-grestore
-\end{filecontents*}
+% \begin{filecontents*}{example.eps}
+% %!PS-Adobe-3.0 EPSF-3.0
+% %%BoundingBox: 19 19 221 221
+% %%CreationDate: Mon Sep 29 1997
+% %%Creator: programmed by hand (JK)
+% %%EndComments
+% gsave
+% newpath
+%   20 20 moveto
+%   20 220 lineto
+%   220 220 lineto
+%   220 20 lineto
+% closepath
+% 2 setlinewidth
+% gsave
+%   .4 setgray fill
+% grestore
+% stroke
+% grestore
+% \end{filecontents*}
 % %
 \RequirePackage{fix-cm}
 %
@@ -90,20 +90,23 @@ grestore
 
 \def\st#1{{\color{red} #1 }}
 \def\rep#1{{\color{blue} #1 }}
-% \renewcommand{\H}{\textbf{H}}
-% \newcommand{\Q}{\textbf{Q}}
-% \newcommand{\y}{\textbf{y}}
-% \newcommand{\x}{\textbf{x}}
-% \newcommand{\No}{\textbf{n}}
-% \newcommand{\W}{\textbf{W}}
-% \newcommand{\Lb}{\textbf{L}}
-% \newcommand{\I}{\textbf{I}}
-% \newcommand{\ie}{\textit{i.e.}}
-% \newcommand{\sinr}{\text{SINR}}
-% \newcommand{\ber}{\text{BER}}
-% \newcommand{\snr}{\text{SNR}}
-% \newcommand{\one}{1}
-\include{notation}
+\renewcommand{\H}{\textbf{H}}
+\newcommand{\Q}{\textbf{Q}}
+\newcommand{\y}{\textbf{y}}
+\newcommand{\x}{\textbf{x}}
+\newcommand{\No}{\textbf{n}}
+\newcommand{\W}{\textbf{W}}
+\newcommand{\Lb}{\textbf{L}}
+\newcommand{\I}{\textbf{I}}
+\newcommand{\ie}{\textit{i.e.}}
+\newcommand{\sinr}{\text{SINR}}
+\newcommand{\ber}{\text{BER}}
+\newcommand{\snr}{\text{SNR}}
+\newcommand{\one}{1}
+\newtheorem{thm}{Theorem}
+\newtheorem{cor}[thm]{Corollary}
+\def\d{\mathrm{d}}
+%\include{notation}
 %\fnmsep
 %\renewcommand{\baselinestretch}{1.2} %for double-spaced, use 1.6
 % etc.
@@ -543,7 +546,7 @@ The precoder $\W$ cancels interference from streams with indices $j>i$. The rema
 \begin{align}\label{eq:sinr-downlink}
 \gamma_{i}=\frac{P|l_{ii}|^2}{\sigma^2},
 \end{align}
-and then the achievable rate on $i$th stream is given by
+and then the achievable rate on $i^{th}$ stream is given by
 \begin{align}\label{eqn:per_stream_rate}
 R_i = \log [ 1+\gamma_i],
 \end{align}
@@ -556,12 +559,12 @@ When used under the JT-TC scheme, the THP approach is to be modified to take int
 \y&=\sum_{k=1}^{L}\Lb^{(k)}\x+\No,
 \label{eq:DF_DPC_adv}
 \end{align}
-where $\Lb^{(i)}$ is the LQ decomposition of channel $\H^{(i)}$ from $i$th AP.
-Therefore in two AP coordination, $i$th stream will be having a $\snr$,
+where $\Lb^{(i)}$ is the LQ decomposition of channel $\H^{(i)}$ from $i^{th}$ AP.
+Therefore in two AP coordination, $i^{th}$ stream will be having a $\snr$,
 \begin{align}\label{eqn:SNR_JT_MIMO}
 \gamma^{JTM}_i=\frac{P_1 |l^{(1)}_{ii}|^2+P_2 |l^{(2)}_{ii}|^2}{\sigma^2},
 \end{align} 
-where $l^{(k)}_{ij}$ is the element in the $i$th row and $j$th column of $\Lb^{(k)}$. 
+where $l^{(k)}_{ij}$ is the element in the $i^{th}$ row and $j^{th}$ column of $\Lb^{(k)}$. 
 
 \begin{theorem}\label{the:cap_MIMO_JT}
 	The achievable rate of $N\times N$ MIMO with two AP JT-TC using ZF-DPC is given by
@@ -658,7 +661,7 @@ Let us define the interference sets $\I_i$ of APs who transmit in the same chann
     & \ldots&&\quad\vdots\\
     & (AP_1^{N_{Ch}},AP_2^{N_{Ch}},AP_3^{N_{Ch}},\ldots,AP_{F_{N_{Ch}}}^{N_{Ch}})&& = \I_{N_{Ch}}.
 \end{align*}
-Here $AP_{j}^i \in \I_i$ is the j number of APs using the $i_{th}$ channel, and $F_i$ is the number of APs that use the same channel $i$. Also,
+Here $AP_{j}^i \in \I_i$ is the j number of APs using the $i^{th}$ channel, and $F_i$ is the number of APs that use the same channel $i$. Also,
 \begin{equation}
 \label{eq:TotalAPs}
     \sum_{i=1}^{N_{Ch}} F_i = N_{AP},
@@ -684,7 +687,7 @@ For $a\in I_i, i\leq N_{Ch}^*$, the only possible mode of transmission is the SA
 % Defining notations for different modes of transmission
 \subsection{Scheduling Modes of STAs}
 \label{subsec:schedulingModesOfSTAs}
-For any STA, two scheduling methods are available, 
+For any STA, two scheduling methods are available: 
 \begin{itemize}
     \item Joint Transmission (JT): This will only be possible for the APs that belongs to $\I_i$ for $i > N_{Ch}^*$.
     
@@ -1139,7 +1142,7 @@ A pseudo code is provided in \textit{Algorithm \ref{algo:SchedulingAlgorithmPsud
 %
 %[iterating and refining the systems output]
 \begin{algorithm}[h]
-    \caption{Scheduling Algorithm}
+        \caption{Scheduling Algorithm}
     \label{algo:SchedulingAlgorithmPsudoCode}
     \begin{algorithmic}[1]
         \State Initialize $I_i$
@@ -1220,7 +1223,8 @@ It ensures that for every value of $\vec{N}$, the algorithm will generate unique
 \subsection{Performance evaluation}
 After a schedule has been generated, the system can now be analyzed for its performance. A given set of inputs will generate unique assignments of STAs for each APs and will always produce the same performance parameters.
 
-The performance of the system is evaluated using the criteria discussed in \ref{subsec:criteriaForOptimalScheduling}.
+The performance of the system is evaluated using the criteria as discussed above in this section.
+%\ref{subsec:criteriaForOptimalScheduling}.
 We want the system to have high overall throughput while having similar individual throughput for each user. Thus, we defined the performance function as
 \begin{equation}
     P(\vec{N}) = \frac{C_{Sys}(\vec{N})}{\sigma_{C_{User}}^2(\vec{N})}.
